@@ -36,6 +36,12 @@ contract MultiSigWallet {
     function sendTransfer(uint id) external onlyApprover() {
         require(transfers[id].sent == false, "Transfer already sent.");
 
+        if (approvals[msg.sender][id] == false) {
+            approvals[msg.sender][id] = true;
+
+            transfers[id].approvals++;
+        }
+
         if (transfers[id].approvals >= quorum) {
             transfers[id].sent = true;
 
@@ -45,12 +51,6 @@ contract MultiSigWallet {
             to.transfer(amount);
 
             return;
-        }
-
-        if (approvals[msg.sender][id] == false) {
-            approvals[msg.sender][id] = true;
-
-            transfers[id].approvals++;
         }
     }
 
