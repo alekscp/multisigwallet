@@ -6,7 +6,7 @@ module.exports = function(deployer, network, accounts) {
       MultiSigWallet,
       [accounts[0], accounts[1], accounts[2]],
       2,
-      { value: web3.utils.toWei("10", "ether") }
+      { value: web3.utils.toWei("1", "ether") }
     );
   }
 };
