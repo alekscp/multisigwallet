@@ -16,7 +16,7 @@ contract MultiSigWallet {
     mapping(uint => Transfer) public transfers;
     mapping(address => mapping(uint => bool)) approvals;
 
-    uint nextId;
+    uint public nextId;
 
     constructor(address[] memory _approvers, uint _quorum) payable {
         approvers = _approvers;
