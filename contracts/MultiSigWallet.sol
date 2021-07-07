@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: GPL-3.0
+
 pragma solidity ^0.8.4;
 
 contract MultiSigWallet {
@@ -57,7 +59,7 @@ contract MultiSigWallet {
     modifier onlyApprover() {
         bool allowed = false;
 
-        for (uint = 0; i < approvers.length; i++) {
+        for (uint i = 0; i < approvers.length; i++) {
             if (approvers[i] == msg.sender) {
                 allowed = true;
             }
