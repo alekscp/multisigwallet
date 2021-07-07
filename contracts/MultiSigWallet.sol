@@ -12,6 +12,7 @@ contract MultiSigWallet {
         bool sent;
     }
     mapping(uint => Transfer) transfers;
+    mapping(address => mapping(uint => bool)) approvals;
 
     uint nextId;
 
@@ -20,7 +21,7 @@ contract MultiSigWallet {
         quorum = _quorum;
     }
 
-    function createTransfer(uint amount, address payable to) external {
+    function createTransfer(uint amount, address payable to) external onlyApprover(){
         transfers[nextId] = Transfer({
             id: nextId,
             amount: amount,
@@ -30,5 +31,39 @@ contract MultiSigWallet {
         });
 
         nextId++;
+    }
+
+    function sendTransfer(uint id) external onlyApprover() {
+        require(transfers[id].sent != false, "Transfer already sent.");
+
+        if (transfers[id].approvals >= quorum) {
+            transfers[id].sent = true;
+
+            address payable to = transfers[id].to;
+            uint amount = transfers[id].amount;
+
+            to.transfer(amount);
+
+            return;
+        }
+
+        if (approvals[msg.sender][id] == false) {
+            approvals[msg.sender][id] = true;
+
+            transfers[id].approvals++;
+        }
+    }
+
+    modifier onlyApprover() {
+        bool allowed = false;
+
+        for (uint = 0; i < approvers.length; i++) {
+            if (approvers[i] == msg.sender) {
+                allowed = true;
+            }
+        }
+
+        require(allowed == true, "Only approver allowed");
+        _;
     }
 }
