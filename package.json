@@ -1,0 +1,14 @@
+{
+  "name": "multisigwallet",
+  "version": "1.0.0",
+  "description": "Simple MultiSig wallet DApp",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aleks CP",
+  "license": "ISC"
+}
