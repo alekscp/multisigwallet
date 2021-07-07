@@ -34,7 +34,7 @@ contract MultiSigWallet {
     }
 
     function sendTransfer(uint id) external onlyApprover() {
-        require(transfers[id].sent != false, "Transfer already sent.");
+        require(transfers[id].sent == false, "Transfer already sent.");
 
         if (transfers[id].approvals >= quorum) {
             transfers[id].sent = true;
