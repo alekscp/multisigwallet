@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Multisig from './contracts/Multisig.json';
+import MultiSigWallet from './contracts/MultiSigWallet.json';
 import { getWeb3 } from './utils.js';
 
 function App() {
@@ -15,9 +15,10 @@ function App() {
       const web3 = await getWeb3();
       const accounts = await web3.eth.getAccounts();
       const networkId = await web3.eth.net.getId();
-      const deployedNetwork = Multisig.networks[networkId];
+      const deployedNetwork = MultiSigWallet.networks[networkId];
+      console.log(deployedNetwork)
       const contract = new web3.eth.Contract(
-        Multisig.abi,
+        MultiSigWallet.abi,
         deployedNetwork && deployedNetwork.address,
       );
 
@@ -98,7 +99,7 @@ function App() {
 
   return (
     <div className="container">
-      <h1 className="text-center">Multisig</h1>
+      <h1 className="text-center">MultiSigWallet</h1>
 
       <div className="row">
         <div className="col-sm-12">
