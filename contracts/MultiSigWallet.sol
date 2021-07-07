@@ -18,7 +18,7 @@ contract MultiSigWallet {
 
     uint nextId;
 
-    constructor(address[] memory _approvers, uint _quorum) public payable {
+    constructor(address[] memory _approvers, uint _quorum) payable {
         approvers = _approvers;
         quorum = _quorum;
     }
