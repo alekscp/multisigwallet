@@ -13,7 +13,7 @@ contract MultiSigWallet {
         uint approvals;
         bool sent;
     }
-    mapping(uint => Transfer) transfers;
+    mapping(uint => Transfer) public transfers;
     mapping(address => mapping(uint => bool)) approvals;
 
     uint nextId;
