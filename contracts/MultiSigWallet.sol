@@ -21,7 +21,14 @@ contract MultiSigWallet {
     }
 
     function createTransfer(uint amount, address payable to) external {
-        // Container
-        // Transfer
+        transfers[nextId] = Transfer({
+            id: nextId,
+            amount: amount,
+            to: to,
+            approvals: 0,
+            sent: false
+        });
+
+        nextId++;
     }
 }
