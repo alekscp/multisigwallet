@@ -1,3 +1,5 @@
+const { expectRevert } = require("@openzeppelin/test-helpers")
+
 const MultiSigWallet = artifacts.require("MultiSigWallet");
 
 contract("MultiSigWallet", (accounts) => {
@@ -16,5 +18,9 @@ contract("MultiSigWallet", (accounts) => {
       assert.equal(transfer.id.toNumber(), 0)
       assert.equal(transfer.amount.toNumber(), 1000)
     })
+  })
+
+  describe("sendTransfer", () => {
+    
   })
 });
