@@ -24,13 +24,12 @@ contract MultiSigWallet {
     }
 
     function createTransfer(uint amount, address payable to) external onlyApprover(){
-        transfers[nextId] = Transfer({
-            id: nextId,
-            amount: amount,
-            to: to,
-            approvals: 0,
-            sent: false
-        });
+        Transfer storage t = transfers[nextId];
+        t.id = nextId;
+        t.amount = amount;
+        t.to = to;
+        t.approvals = 0;
+        t.sent = false;
 
         nextId++;
     }
