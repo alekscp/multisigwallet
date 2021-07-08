@@ -1,6 +1,9 @@
 # MultiSig Wallet DApp
 
 ## Goerli Network
+
+https://alekscp.github.io/multisigwallet/
+
 ### Contract
 [0xD95E9de093b1D81164709F529A19828B3742B745](https://goerli.etherscan.io/address/0xD95E9de093b1D81164709F529A19828B3742B745)
 
