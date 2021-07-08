@@ -24,7 +24,7 @@
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
 
-require('dotven').config()
+require('dotenv').config()
 
 module.exports = {
   /**
